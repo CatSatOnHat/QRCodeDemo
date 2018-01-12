@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="myv-iQ-2uT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="sNI-gk-X1n">
+            <objects>
+                <navigationController id="myv-iQ-2uT" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aSc-tp-MZb">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="uUl-TK-Mcd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RBP-bT-BL7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-806" y="133"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -22,36 +39,69 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="显示结果" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbn-mN-JZ3">
-                                <rect key="frame" x="10" y="323.5" width="355" height="21.5"/>
+                                <rect key="frame" x="10" y="204" width="355" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ao-9s-1T8">
-                                <rect key="frame" x="151" y="165" width="72" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ao-9s-1T8">
+                                <rect key="frame" x="156" y="114" width="62" height="30"/>
                                 <state key="normal" title="开始扫描"/>
                                 <connections>
                                     <action selector="scanStart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QqX-iJ-NUJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Asl-Pe-giP">
-                                <rect key="frame" x="91" y="203" width="193" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Asl-Pe-giP">
+                                <rect key="frame" x="118.5" y="159" width="138" height="30"/>
                                 <state key="normal" title="图片文件解析二维码"/>
                                 <connections>
                                     <action selector="GetQRCodeInfoFromImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mYT-si-kV5"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Lu-Sw-HOV">
+                                <rect key="frame" x="40" y="372" width="295" height="295"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4Lu-Sw-HOV" secondAttribute="height" id="ADd-LU-BnT"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="我是李大爷" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KHU-xF-F4i">
+                                <rect key="frame" x="40" y="327" width="295" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t64-K9-X5Y">
+                                <rect key="frame" x="149" y="282" width="77" height="30"/>
+                                <state key="normal" title="生成二维码"/>
+                                <connections>
+                                    <action selector="generatorQRCode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S56-OX-L9B"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="qbn-mN-JZ3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="jrQ-lI-szg"/>
+                            <constraint firstItem="t64-K9-X5Y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2yC-NJ-IHc"/>
+                            <constraint firstAttribute="trailing" secondItem="4Lu-Sw-HOV" secondAttribute="trailing" constant="40" id="4mL-fW-JWL"/>
+                            <constraint firstItem="KHU-xF-F4i" firstAttribute="trailing" secondItem="4Lu-Sw-HOV" secondAttribute="trailing" id="5pR-ev-Rz7"/>
+                            <constraint firstItem="KHU-xF-F4i" firstAttribute="top" secondItem="t64-K9-X5Y" secondAttribute="bottom" constant="15" id="Bg0-V4-kbt"/>
+                            <constraint firstItem="4Ao-9s-1T8" firstAttribute="top" secondItem="QAv-oE-VYx" secondAttribute="bottom" constant="50" id="Hnx-gS-qex"/>
+                            <constraint firstItem="OuS-2A-wbi" firstAttribute="top" secondItem="4Lu-Sw-HOV" secondAttribute="bottom" id="KKL-Mq-BEc"/>
+                            <constraint firstItem="4Ao-9s-1T8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Oeq-fn-ESb"/>
+                            <constraint firstItem="KHU-xF-F4i" firstAttribute="leading" secondItem="4Lu-Sw-HOV" secondAttribute="leading" id="PLU-ov-Fh8"/>
+                            <constraint firstItem="Asl-Pe-giP" firstAttribute="centerX" secondItem="4Ao-9s-1T8" secondAttribute="centerX" id="VrG-Qa-kKw"/>
+                            <constraint firstItem="4Lu-Sw-HOV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="40" id="Ynx-wf-HrZ"/>
+                            <constraint firstItem="4Lu-Sw-HOV" firstAttribute="top" secondItem="KHU-xF-F4i" secondAttribute="bottom" constant="15" id="fFZ-WP-CSl"/>
+                            <constraint firstItem="qbn-mN-JZ3" firstAttribute="top" secondItem="Asl-Pe-giP" secondAttribute="bottom" constant="15" id="fQG-UP-wEV"/>
+                            <constraint firstItem="Asl-Pe-giP" firstAttribute="top" secondItem="4Ao-9s-1T8" secondAttribute="bottom" constant="15" id="iuG-wn-1qd"/>
                             <constraint firstItem="qbn-mN-JZ3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="srG-8w-cKk"/>
+                            <constraint firstItem="KHU-xF-F4i" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="t3R-au-2PI"/>
                             <constraint firstAttribute="trailing" secondItem="qbn-mN-JZ3" secondAttribute="trailing" constant="10" id="xrU-64-XCS"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Aoh-NM-NMB"/>
                     <connections>
+                        <outlet property="QRCodeImageV" destination="4Lu-Sw-HOV" id="NSZ-Af-HfQ"/>
+                        <outlet property="QRCodeTextField" destination="KHU-xF-F4i" id="7Rh-Wn-WtV"/>
                         <outlet property="scanResult" destination="qbn-mN-JZ3" id="M2b-2a-do5"/>
                     </connections>
                 </viewController>

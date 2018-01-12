@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B713257620087C8E00222F7F /* UIImage+GeneratorQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = B713257520087C8E00222F7F /* UIImage+GeneratorQRCode.m */; };
+		B71325792008936000222F7F /* NSString+ExtractQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = B71325782008936000222F7F /* NSString+ExtractQRCode.m */; };
 		B764782D1FFF1C2900A2C5B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B764782C1FFF1C2900A2C5B2 /* AppDelegate.m */; };
 		B76478301FFF1C2900A2C5B2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B764782F1FFF1C2900A2C5B2 /* ViewController.m */; };
 		B76478331FFF1C2900A2C5B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76478311FFF1C2900A2C5B2 /* Main.storyboard */; };
@@ -38,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B713257420087C8E00222F7F /* UIImage+GeneratorQRCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+GeneratorQRCode.h"; sourceTree = "<group>"; };
+		B713257520087C8E00222F7F /* UIImage+GeneratorQRCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GeneratorQRCode.m"; sourceTree = "<group>"; };
+		B71325772008936000222F7F /* NSString+ExtractQRCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ExtractQRCode.h"; sourceTree = "<group>"; };
+		B71325782008936000222F7F /* NSString+ExtractQRCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ExtractQRCode.m"; sourceTree = "<group>"; };
 		B76478281FFF1C2900A2C5B2 /* QRCodeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCodeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B764782B1FFF1C2900A2C5B2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B764782C1FFF1C2900A2C5B2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -117,6 +123,10 @@
 				B764782F1FFF1C2900A2C5B2 /* ViewController.m */,
 				B764785D1FFF1CBB00A2C5B2 /* QRCodeVC.h */,
 				B764785E1FFF1CBB00A2C5B2 /* QRCodeVC.m */,
+				B713257420087C8E00222F7F /* UIImage+GeneratorQRCode.h */,
+				B713257520087C8E00222F7F /* UIImage+GeneratorQRCode.m */,
+				B71325772008936000222F7F /* NSString+ExtractQRCode.h */,
+				B71325782008936000222F7F /* NSString+ExtractQRCode.m */,
 				B76478311FFF1C2900A2C5B2 /* Main.storyboard */,
 				B76478341FFF1C2900A2C5B2 /* Assets.xcassets */,
 				B76478361FFF1C2900A2C5B2 /* LaunchScreen.storyboard */,
@@ -286,8 +296,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B713257620087C8E00222F7F /* UIImage+GeneratorQRCode.m in Sources */,
 				B764785F1FFF1CBB00A2C5B2 /* QRCodeVC.m in Sources */,
 				B76478301FFF1C2900A2C5B2 /* ViewController.m in Sources */,
+				B71325792008936000222F7F /* NSString+ExtractQRCode.m in Sources */,
 				B764783B1FFF1C2900A2C5B2 /* main.m in Sources */,
 				B764782D1FFF1C2900A2C5B2 /* AppDelegate.m in Sources */,
 			);
