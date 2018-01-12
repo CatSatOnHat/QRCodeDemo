@@ -8,6 +8,8 @@
 
 #import "NSString+ExtractQRCode.h"
 
+NSString *const NoExtract = @"照片中未识别到二维码";
+
 @implementation NSString (ExtractQRCode)
 
 + (NSString *)extractQRCodeFromImage:(UIImage *)image {
@@ -17,7 +19,7 @@
     if (features.count > 0) {
         return [[features firstObject] messageString];
     } else {
-        return @"照片中未识别到二维码";
+        return NoExtract;
     }
 }
 

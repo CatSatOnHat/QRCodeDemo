@@ -8,8 +8,9 @@
 
 #import "QRCodeVC.h"
 #import <AVFoundation/AVFoundation.h>
+#import "NSString+ExtractQRCode.h"
 
-@interface QRCodeVC () <AVCaptureMetadataOutputObjectsDelegate>
+@interface QRCodeVC () <AVCaptureMetadataOutputObjectsDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
 
 @property (nonatomic, strong) AVCaptureDevice *device;
 @property (nonatomic, strong) AVCaptureSession *session;
@@ -26,6 +27,8 @@
 
 @property (nonatomic, strong) UILabel *remindLabel;
 @property (nonatomic, strong) UIImageView *scanImageV;
+//逐帧转换为图片扫描（辨识度比较低的二维码直接用系统的扫不出来）
+@property (nonatomic, strong) AVCaptureVideoDataOutput *videoDataOutput;
 
 @end
 
@@ -64,6 +67,50 @@
         _block(metadataObject.stringValue);
         [self.navigationController popViewControllerAnimated:YES];
     }
+}
+#pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
+- (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
+    //逐帧识别图片
+    if ([[NSString extractQRCodeFromImage:[self imageFromSampleBuffer:sampleBuffer]] isEqualToString:NoExtract]) {
+        //识别到二维码的时候
+        _block([NSString extractQRCodeFromImage:[self imageFromSampleBuffer:sampleBuffer]]);
+    }
+}
+
+/**
+ 转换为图片
+
+ @param sampleBuffer sampleBuffer
+ @return 图片
+ */
+- (UIImage *)imageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer {
+    // Get a CMSampleBuffer's Core Video image buffer for the media data
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    // Lock the base address of the pixel buffer
+    CVPixelBufferLockBaseAddress(imageBuffer, 0);
+    // Get the number of bytes per row for the pixel buffer
+    void *baseAddress = CVPixelBufferGetBaseAddress(imageBuffer);
+    // Get the number of bytes per row for the pixel buffer
+    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
+    // Get the pixel buffer width and height
+    size_t width = CVPixelBufferGetWidth(imageBuffer);
+    size_t height = CVPixelBufferGetHeight(imageBuffer);
+    // Create a device-dependent RGB color space
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    // Create a bitmap graphics context with the sample buffer data
+    CGContextRef context = CGBitmapContextCreate(baseAddress, width, height, 8, bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+    // Create a Quartz image from the pixel data in the bitmap graphics context
+    CGImageRef quartzImage = CGBitmapContextCreateImage(context);
+    // Unlock the pixel buffer
+    CVPixelBufferUnlockBaseAddress(imageBuffer,0);
+    // Free up the context and color space
+    CGContextRelease(context);
+    CGColorSpaceRelease(colorSpace);
+    // Create an image object from the Quartz image
+    UIImage *image = [UIImage imageWithCGImage:quartzImage];
+    // Release the Quartz image
+    CGImageRelease(quartzImage);
+    return (image);
 }
 #pragma mark - lazy load
 /**
@@ -147,9 +194,13 @@
     if ([_session canAddInput:self.input]) {
         [_session addInput:self.input];
     }
+    //以下二选一
     if ([_session canAddOutput:self.output]) {
         [_session addOutput:self.output];
     }
+//    if ([_session canAddOutput:self.videoDataOutput]) {
+//        [_session addOutput:self.videoDataOutput];
+//    }
     AVAuthorizationStatus authorizationStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (authorizationStatus == AVAuthorizationStatusRestricted || authorizationStatus == AVAuthorizationStatusDenied) {
         UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"XXXX" message:@"请打开相机访问权限" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
@@ -274,6 +325,20 @@
     [path appendPath:[UIBezierPath bezierPathWithRect:CGRectMake(maskMinX, maskMaxY, maskMaxX - maskMinX, originalMaxY - maskMaxY)]];
     layer.path = path.CGPath;
     return layer;
+}
+
+- (AVCaptureVideoDataOutput *)videoDataOutput {
+    if (!_videoDataOutput) {
+        _videoDataOutput = [[AVCaptureVideoDataOutput alloc] init];
+        dispatch_queue_t queue = dispatch_queue_create("scanQueue", NULL);
+        [_videoDataOutput setSampleBufferDelegate:self queue:queue];
+        _videoDataOutput.videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                                          [NSNumber numberWithInt:kCVPixelFormatType_32BGRA], kCVPixelBufferPixelFormatTypeKey,
+                                          [NSNumber numberWithInt: 320], (id)kCVPixelBufferWidthKey,
+                                          [NSNumber numberWithInt: 240], (id)kCVPixelBufferHeightKey,
+                                          nil];
+    }
+    return _videoDataOutput;
 }
 
 - (void)didReceiveMemoryWarning {
