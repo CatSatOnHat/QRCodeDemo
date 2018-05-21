@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B705B07420B27BF900FA9650 /* QRCodeDemo.podspec in Resources */ = {isa = PBXBuildFile; fileRef = B705B07320B27BF800FA9650 /* QRCodeDemo.podspec */; };
 		B713257620087C8E00222F7F /* UIImage+GeneratorQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = B713257520087C8E00222F7F /* UIImage+GeneratorQRCode.m */; };
 		B71325792008936000222F7F /* NSString+ExtractQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = B71325782008936000222F7F /* NSString+ExtractQRCode.m */; };
 		B764782D1FFF1C2900A2C5B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B764782C1FFF1C2900A2C5B2 /* AppDelegate.m */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B705B07320B27BF800FA9650 /* QRCodeDemo.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QRCodeDemo.podspec; sourceTree = "<group>"; };
 		B713257420087C8E00222F7F /* UIImage+GeneratorQRCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+GeneratorQRCode.h"; sourceTree = "<group>"; };
 		B713257520087C8E00222F7F /* UIImage+GeneratorQRCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GeneratorQRCode.m"; sourceTree = "<group>"; };
 		B71325772008936000222F7F /* NSString+ExtractQRCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ExtractQRCode.h"; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		B764782A1FFF1C2900A2C5B2 /* QRCodeDemo */ = {
 			isa = PBXGroup;
 			children = (
+				B705B07320B27BF800FA9650 /* QRCodeDemo.podspec */,
 				B76478631FFF7A8000A2C5B2 /* icon.png */,
 				B764782B1FFF1C2900A2C5B2 /* AppDelegate.h */,
 				B764782C1FFF1C2900A2C5B2 /* AppDelegate.m */,
@@ -224,7 +227,7 @@
 		B76478201FFF1C2900A2C5B2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Dan;
 				TargetAttributes = {
 					B76478271FFF1C2900A2C5B2 = {
@@ -270,6 +273,7 @@
 			files = (
 				B76478381FFF1C2900A2C5B2 /* LaunchScreen.storyboard in Resources */,
 				B76478351FFF1C2900A2C5B2 /* Assets.xcassets in Resources */,
+				B705B07420B27BF900FA9650 /* QRCodeDemo.podspec in Resources */,
 				B76478641FFF7A8000A2C5B2 /* icon.png in Resources */,
 				B76478331FFF1C2900A2C5B2 /* Main.storyboard in Resources */,
 			);
@@ -370,6 +374,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -377,6 +382,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -404,7 +410,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -425,6 +431,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -432,6 +439,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -453,7 +461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

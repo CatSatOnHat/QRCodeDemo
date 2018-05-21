@@ -51,11 +51,12 @@
     [self setupScanLine];
 }
 - (void)setupScanLine {
+    __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:3.0f delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         [UIView setAnimationRepeatCount:MAXFLOAT];
-        _scanImageV.frame = CGRectMake(self.scanRect.origin.x, CGRectGetMaxY(self.scanRect)-2, self.scanRect.size.width, 2);
+        weakSelf.scanImageV.frame = CGRectMake(self.scanRect.origin.x, CGRectGetMaxY(self.scanRect)-2, self.scanRect.size.width, 2);
     } completion:^(BOOL finished) {
-        _scanImageV.frame = CGRectMake(self.scanRect.origin.x, self.scanRect.origin.y, self.scanRect.size.width, 2);
+        weakSelf.scanImageV.frame = CGRectMake(self.scanRect.origin.x, self.scanRect.origin.y, self.scanRect.size.width, 2);
     }];
 }
 

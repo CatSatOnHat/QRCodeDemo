@@ -24,13 +24,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    _QRCodeImageV.layer.magnificationFilter = kCAFilterNearest;
 }
 
 - (IBAction)scanStart:(id)sender {
     QRCodeVC *scanVC = [[QRCodeVC alloc] init];
+    __weak typeof(self) weakSelf = self;
     scanVC.block = ^(NSString *scanResult) {
         NSLog(@"%@", scanResult);
-        _scanResult.text = scanResult;
+        weakSelf.scanResult.text = scanResult;
     };
     [self.navigationController pushViewController:scanVC animated:YES];
 }
@@ -50,8 +52,9 @@
     NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
     if ([type isEqualToString:@"public.image"]) {
         UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        __weak typeof(self) weakSelf = self;
         [picker dismissViewControllerAnimated:YES completion:^{
-            _scanResult.text = [NSString extractQRCodeFromImage:image];
+            weakSelf.scanResult.text = [NSString extractQRCodeFromImage:image];
         }];
     }
 }
